@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '9vzb#f%g_=!*#*j7t#!c)l2hr-$m3#s!8-+cbp3ubg&zz0tl)r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATES = [
     {
@@ -39,7 +39,7 @@ TEMPLATES = [
     },
 ]
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['namupankki.herokuapp.com']
 
 
 # Application definition
@@ -156,3 +156,7 @@ else:
     except:
         SENDGRID_USER = "none"
         SENDGRID_PASSWORD = "none"
+
+# https://docs.djangoproject.com/en/dev/howto/deployment/checklist/#https
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
