@@ -160,3 +160,4 @@ else:
 # https://docs.djangoproject.com/en/dev/howto/deployment/checklist/#https
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True

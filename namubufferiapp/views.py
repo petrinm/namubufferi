@@ -246,7 +246,7 @@ def magic_auth_view(request, **kwargs):
             )
             mail.attach_alternative(("<h1>Hello."
                                     "</h1><p>Authenticate to Namubufferi using this link. It's valid for 15 minutes.</p>"
-                                    '<a href="http://' + magic_link + '"> Magic Link </a>'
+                                    '<a href="https://' + magic_link + '"> Magic Link </a>'
                                     ), "text/html")
             try:
                 mail.send()
