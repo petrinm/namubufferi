@@ -3,10 +3,13 @@
 {% block content %}
   <div class="container text-center">
     <h2>Welcome<br>{{ user }}</h2>
+    <a href="/" target="_blank">Click this to log in</a>
+  {% comment %}
   <script>
     setTimeout(function(){
       window.location.href = "/";
     }, 2000);
   </script>
+  {% endcomment %}
   </div>
 {% endblock content %}
