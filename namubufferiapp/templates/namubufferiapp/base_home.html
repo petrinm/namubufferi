@@ -11,7 +11,7 @@
     <div class="modal-content namu-modal-content">
       <div class="modal-header namu-modal-header">
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>  -->
-        <span>Vahvista ostos</span>
+        <span>Vahvista</span>
       </div>
       <div class="modal-body">
         <div class="namu-modal-product">
@@ -25,8 +25,8 @@
           {% csrf_token %}
           <input id="product-modal-pk" hidden type="text" name="product_key" value="none">
         </form>
-        <button type="button" class="btn btn-default btn-sm namu-modal-btn namu-modal-btn-red" data-dismiss="modal">Peru</button>
-        <button type="submit" form="buy-form" class="btn btn-success namu-modal-btn namu-modal-btn-green">Osta</button>
+        <button type="button" class="btn btn-default btn-sm namu-btn namu-btn-red" data-dismiss="modal">Peru</button>
+        <button type="submit" form="buy-form" class="btn btn-success namu-btn namu-btn-green">Osta</button>
     </div>
   </div>
 </div>
@@ -51,8 +51,8 @@
           {% csrf_token %}
           <input id="product-modal-pk" hidden type="text" name="product_key" value="none">
         </form>
-        <button type="button" class="btn btn-default btn-sm namu-modal-btn namu-modal-btn" data-dismiss="modal">Palaa</button>
-        <button type="submit" form="buy-form" class="btn btn-success namu-modal-btn namu-modal-btn">Lisää rahaa</button>
+        <button type="button" class="btn btn-default btn-sm namu-btn namu-btn" data-dismiss="modal">Palaa</button>
+        <button type="submit" form="buy-form" class="btn btn-success namu-btn namu-btn">Lisää rahaa</button>
     </div>
   </div>
 </div>
@@ -65,7 +65,7 @@
         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>  -->
         <span>Onnistui!</span>
       </div>
-      <div class="modal-body">
+      <div class="modal-body namu-modal-body">
         <div id="namu-modal-success">
           <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 113 113" style="" xml:space="preserve">
             <style type="text/css">.st0{fill:none;stroke:#75C695;stroke-width:12;stroke-miterlimit:10;}</style>
@@ -79,7 +79,7 @@
   </div>
 </div>
 
-<!-- Deposit Modal -->
+<!-- Deposit Modal TODO: fix the num input -->
 <div class="modal fade" id="moneyModal" tabindex="-1" role="dialog" aria-labelledby="moneyModalTitle">
   <div class="modal-dialog namu-dialog" role="document">
     <div class="modal-content namu-modal-content">
@@ -93,61 +93,33 @@
       </div>
       <div class="modal-body namu-modal-body">
         <div class="namu-modal-deposit-leftcolumn">
+
           <form class="form-inline" id="money-form" action="/deposit/" method="post">
-            <div class="form-group">
+            <div class="form-group namu-modal-deposit-form">
               <div class="input-group">
                 {{ money_form.euros }}
-                <div class="input-group-addon">.</div>
-                {{ money_form.cents }}
-                <div class="input-group-addon">€</div>
+                <div class="input-group-addon hidden">.</div>
+                {{ money_form.cents }} <!-- Hidden in forms.py by hide-class -->
+                <div class="input-group-addon" style="padding:6px 6px;font-size:1.25em;">€</div>
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" form="money-form" class="btn btn-success namu-modal-btn namu-modal-btn-green">
-                Hyväksy
+              <button type="submit" form="money-form" class="btn btn-success namu-btn namu-btn-green">
+                Lisää saldoa
               </button>
             </div>
 
           </form>
         </div>
         <div class="namu-modal-deposit-rightcolumn">
-          <a href="/logout" class="btn btn-default namu-modal-btn">
+          <a href="/logout" class="btn btn-default namu-btn namu-btn-deposit-fix">
             Logout {% comment %}<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>{% endcomment %}
           </a>
 
-          <button type="button" class="btn btn-default namu-modal-btn" data-toggle="modal" data-target="#historyModal">
+          <button type="button" class="btn btn-default namu-btn namu-btn-deposit-fix" data-toggle="modal" data-target="#historyModal">
             History {% comment %}<span class="glyphicon glyphicon-list glyphicon-lg" aria-hidden="true"></span>{% endcomment %}
           </button>
         </div>
-        <!--
-        <div class="namu-modal-deposit-leftcolumn">
-          <form class="form-inline" id="money-form" action="/deposit/" method="post">
-            <div class="form-group">
-              <div class="input-group">
-                {{ money_form.euros }}
-                <div class="input-group-addon">.</div>
-                {{ money_form.cents }}
-                <div class="input-group-addon">€</div>
-              </div>
-            </div>
-            <div class="text-center">
-              <button type="submit" form="money-form" class="btn btn-success namu-modal-btn namu-modal-btn-green">
-                Hyväksy
-              </button>
-            </div>
-
-          </form>
-        </div>
-        <div class="namu-modal-deposit-rightcolumn">
-          <a href="/logout" class="btn btn-default namu-modal-btn">
-            Logout {% comment %}<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>{% endcomment %}
-          </a>
-
-          <button type="button" class="btn btn-default namu-modal-btn" data-toggle="modal" data-target="#historyModal">
-            History {% comment %}<span class="glyphicon glyphicon-list glyphicon-lg" aria-hidden="true"></span>{% endcomment %}
-          </button>
-        </div>
-        -->
       </div>
     </div>
   </div>
@@ -159,7 +131,7 @@
     <div class="modal-content namu-modal-content">
       <div class="modal-header namu-modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="historyModalLabel">History<small> 5 Most Recent</small></h4>
+        <small> History</small>
       </div>
       <div class="modal-body">
         <div class="checkbox">
@@ -171,7 +143,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default namu-modal-btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default namu-btn" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -210,10 +182,10 @@
           {% csrf_token %}
           <input id="transaction_key" type="text" name="transaction_key" value="">
         </form>
-        <button id="transaction-cancel-button" type="submit" form="cancelform" class="btn btn-default namu-modal-btn namu-modal-btn-red">
+        <button id="transaction-cancel-button" type="submit" form="cancelform" class="btn btn-default namu-btn namu-btn-red">
           Cancel Transaction
         </button>
-        <button type="button" class="btn btn-default namu-modal-btn" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default namu-btn" data-dismiss="modal">Close</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -267,7 +239,7 @@
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid text-center">
-    <button type="button" class="btn btn-primary btn-lg navbar-btn" data-toggle="modal" data-target="#moneyModal">
+    <button type="button" class="btn btn-primary btn-lg navbar-btn"  data-toggle="modal" data-target="#moneyModal">
         {{ user }}
         <span class="balance {% if user.userprofile.balance < 0 %} text-danger{% endif %}">
         {{ user.userprofile.balance }}€

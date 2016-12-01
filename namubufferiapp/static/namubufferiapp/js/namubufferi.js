@@ -114,5 +114,5 @@ $(document).ready(function() {
     .blur(function() {
         $('.namu-search').removeClass('namu-search-focused');
     });
-    
+
 });
