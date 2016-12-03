@@ -1,9 +1,6 @@
 # Namubufferi magic link authentication backend
 from django.contrib.auth.models import User
 
-from models import Account
-
-
 class MagicAuthBackend(object):
     """
     https://docs.djangoproject.com/en/1.10/topics/auth/customizing/#authentication-backends
@@ -11,12 +8,12 @@ class MagicAuthBackend(object):
     def authenticate(self, magic_token=None):
         # Check the token and return a User.
         try:
-            account = Account.objects.get(magic_token=magic_token)
+            user = User.objects.get(magictoken__magic_token=magic_token)
         except:
             return None
-        if account.magic_token_is_alive():
-            account.deactivate_magic_token()
-            return account.user
+        if user.magictoken.is_alive():
+            user.magictoken.deactivate()
+            return user
         else:
             return None
 

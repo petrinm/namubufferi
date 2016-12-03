@@ -10,4 +10,5 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('namubufferiapp.urls')),
+    url(r'^', include('magicauth.urls')),
 ]

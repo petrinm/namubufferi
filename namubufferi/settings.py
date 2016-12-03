@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'namubufferiapp',
+    'magicauth',
     'bootstrap3',
     'autofixture',
 )
@@ -102,7 +103,7 @@ STATIC_URL = '/static/'
 
 # Authentication URLs
 # https://docs.djangoproject.com/en/1.9/ref/settings/#std:setting-LOGIN_URL
-LOGIN_URL = '/login'
+LOGIN_URL = '/magic'
 LOGOUT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 
@@ -142,7 +143,7 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # https://docs.djangoproject.com/en/1.10/topics/auth/customizing/#authentication-backends
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend',
-                           'namubufferiapp.backends.MagicAuthBackend'
+                           'magicauth.backends.MagicAuthBackend'
                            ]
 
 if DEBUG == True:
